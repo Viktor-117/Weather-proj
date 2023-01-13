@@ -2,8 +2,9 @@ import {
   Search,
   SearchIconWrapper,
   StyledInputBase,
+  SearchWrapper,
 } from './SearchAppBar.styled';
-// import { useDispatch } from 'react-redux';
+import CitySelect from 'components/CitySelect';
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useState } from 'react';
@@ -20,20 +21,20 @@ axios.defaults.baseURL = 'https://geocoding-api.open-meteo.com/v1/';
 export default function SearchAppBar() {
   // const dispatch = useDispatch();
   const [location, setLocation] = useState('');
+  const [cityList, setCityList] = useState('');
 
   const handleChange = e => {
     setLocation(e.target.value);
 
-    if (location.length >= 2) {
-      async function searchLocation() {
-        try {
-          const res = await axios.get(`search?name=${location}&count=5`);
-          console.log(res);
-        } catch (error) {}
-      }
-
-      searchLocation();
+    async function searchLocation() {
+      try {
+        const res = await axios.get(`search?name=${location}&count=5`);
+        console.log(res.data.results);
+        setCityList(res.data.results);
+      } catch (error) {}
     }
+
+    searchLocation();
   };
 
   return (
@@ -57,17 +58,21 @@ export default function SearchAppBar() {
           >
             Weather
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search location"
-              inputProps={{ 'aria-label': 'search' }}
-              value={location}
-              onChange={handleChange}
-            />
-          </Search>
+
+          <SearchWrapper>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search location"
+                inputProps={{ 'aria-label': 'search' }}
+                value={location}
+                onChange={handleChange}
+              />
+            </Search>
+            {cityList && <CitySelect cities={cityList} />}
+          </SearchWrapper>
         </Toolbar>
       </AppBar>
     </Box>

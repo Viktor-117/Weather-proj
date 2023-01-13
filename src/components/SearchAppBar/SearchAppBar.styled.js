@@ -42,3 +42,7 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
+export const SearchWrapper = styled('div')(({ theme }) => ({
+  position: 'relative',
+}));
