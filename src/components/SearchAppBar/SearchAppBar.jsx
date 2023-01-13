@@ -4,6 +4,8 @@ import {
   StyledInputBase,
 } from './SearchAppBar.styled';
 // import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,12 +15,25 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
+axios.defaults.baseURL = 'https://geocoding-api.open-meteo.com/v1/';
+
 export default function SearchAppBar() {
   // const dispatch = useDispatch();
   const [location, setLocation] = useState('');
 
   const handleChange = e => {
-    console.log(e);
+    setLocation(e.target.value);
+
+    if (location.length >= 2) {
+      async function searchLocation() {
+        try {
+          const res = await axios.get(`search?name=${location}&count=5`);
+          console.log(res);
+        } catch (error) {}
+      }
+
+      searchLocation();
+    }
   };
 
   return (
