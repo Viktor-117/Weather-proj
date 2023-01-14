@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from './slice';
+import cityReducer from './slice';
 
-export const store = configureStore({ reducer: { city: reducer } });
+export const store = configureStore({ reducer: { city: cityReducer } });
+
+console.log(store);

@@ -6,7 +6,7 @@ import {
 } from './SearchAppBar.styled';
 import CitySelect from 'components/CitySelect';
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';

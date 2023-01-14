@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import operations from './operations';
+import { getForecast } from './operations';
 
 const initialState = {
-  city: { longitude: null, latitude: null },
+  city: { latitude: null, longitude: null },
   isLoading: false,
   error: null,
 };
@@ -12,19 +12,31 @@ const handlePending = state => (state.isLoading = true);
 const slice = createSlice({
   name: 'city',
   initialState,
-  extraReducers: {
-    [operations.getForecast.fulfilled](state, action) {
-      state.isLoading = false;
+  reducers: {
+    setCity(state, action) {
+      console.log(action);
       state.city = action.payload;
     },
-    [operations.getForecast.pending]: handlePending,
-    [operations.getForecast.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    // [getForecast.fulfilled](state, action) {
+    //   console.log('Hi');
+    //   console.log(action.payload);
+    //   state.isLoading = false;
+    //   state.city = action.payload;
+    // },
+    // [getForecast.pending]: handlePending,
+    // [getForecast.rejected](state, action) {
+    //   console.log(action);
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
   },
 });
 
-const reducer = slice.reducer;
+const cityReducer = slice.reducer;
 
-export default reducer;
+export const { setCity } = slice.actions;
+
+console.log(cityReducer);
+console.log(slice.actions);
+
+export default cityReducer;

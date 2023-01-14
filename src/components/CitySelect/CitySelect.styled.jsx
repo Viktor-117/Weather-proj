@@ -12,7 +12,7 @@ export const City = styled(MenuItem)`
 
 export const Container = styled(Box)`
   position: absolute;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 0px 7px 11px 1px rgba(0, 0, 0, 0.75);
   background-color: #fff;
   margin-left: 7px;
