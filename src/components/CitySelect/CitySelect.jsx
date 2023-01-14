@@ -2,13 +2,16 @@ import { useDispatch } from 'react-redux';
 import { City, CityInfo, Container } from './CitySelect.styled';
 import FormControl from '@mui/material/FormControl';
 import { setCity } from 'redux/slice';
+import getForecast from 'redux/operations';
 
-export default function CitySelect({ cities }) {
+export default function CitySelect({ cities, isChosen }) {
   const dispatch = useDispatch();
 
-  const handleClick = ({ latitude, longitude }) => {
-    const gps = { latitude, longitude };
+  const handleClick = ({ latitude, longitude, name }) => {
+    const gps = { latitude, longitude, name };
     dispatch(setCity(gps));
+    dispatch(getForecast({ latitude, longitude }));
+    // isChosen('');
   };
 
   return (

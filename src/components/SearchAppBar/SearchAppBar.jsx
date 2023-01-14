@@ -71,7 +71,9 @@ export default function SearchAppBar() {
                 onChange={handleChange}
               />
             </Search>
-            {cityList && <CitySelect cities={cityList} />}
+            {cityList && location && (
+              <CitySelect cities={cityList} isChosen={setLocation} />
+            )}
           </SearchWrapper>
         </Toolbar>
       </AppBar>

@@ -3,15 +3,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://api.open-meteo.com/v1';
 
-export const getForecast = createAsyncThunk(
+const getForecast = createAsyncThunk(
   'city/getForecast',
-  async (data, { rejectWithValue }) => {
-    console.log('hi');
+  async (data, thunkAPI) => {
     try {
       const response = await axios.get('forecast/', data);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export default getForecast;
