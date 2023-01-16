@@ -19,7 +19,7 @@ export default function Layout() {
               marginTop: '30px',
             }}
           >
-            <RotatingLines strokeColor="#4fa94d" />
+            <RotatingLines strokeColor="#1976D2" />
           </div>
         }
       >

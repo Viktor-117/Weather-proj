@@ -22,7 +22,6 @@ const slice = createSlice({
   },
   extraReducers: {
     [getForecast.fulfilled](state, action) {
-      console.log('Hi');
       console.log(action.payload);
       state.isLoading = false;
       state.city = action.payload;
