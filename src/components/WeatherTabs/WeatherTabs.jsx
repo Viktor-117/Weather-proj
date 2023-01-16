@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -7,7 +8,10 @@ export default function WeatherTabs() {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
+    console.log(typeof newValue);
     setValue(newValue);
+
+    //   switch
   };
 
   return (

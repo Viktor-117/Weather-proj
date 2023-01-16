@@ -6,7 +6,9 @@ const getForecast = createAsyncThunk(
   async ({ latitude, longitude }, thunkAPI) => {
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2
-    )}&longitude=${longitude.toFixed(2)}&current_weather=true`;
+    )}&longitude=${longitude.toFixed(
+      2
+    )}&hourly=temperature_2m,precipitation,rain,weathercode`;
     try {
       const response = await axios.get(queryParamaters);
       return response.data;

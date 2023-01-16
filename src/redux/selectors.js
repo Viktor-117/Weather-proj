@@ -1,9 +1,9 @@
 const getCity = state => state.city.city;
 
-const getCityName = state => state.city.cityName;
+const getIsLoading = state => state.city.IsLoading;
 
-const getIsLoading = state => state.city.getIsLoading;
+const getForecastData = state => state.city.forecastData;
 
-const selectors = { getCity, getIsLoading, getCityName };
+const selectors = { getCity, getIsLoading, getForecastData };
 
 export default selectors;

@@ -30,7 +30,6 @@ export default function SearchAppBar() {
         const res = await axios.get(
           `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=5`
         );
-        console.log(res.data.results);
         setCityList(res.data.results);
       } catch (error) {}
     }
