@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const getForecast = createAsyncThunk(
+const fetchCurrentWeather = createAsyncThunk(
   'city/getForecast',
   async ({ latitude, longitude }, thunkAPI) => {
+    // console.log(latitude, longitude);
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2
     )}&longitude=${longitude.toFixed(
@@ -18,4 +19,6 @@ const getForecast = createAsyncThunk(
   }
 );
 
-export default getForecast;
+const operations = { fetchCurrentWeather };
+
+export default operations;
