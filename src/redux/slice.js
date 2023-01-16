@@ -7,7 +7,9 @@ const initialState = {
   error: null,
 };
 
-const handlePending = state => (state.isLoading = true);
+const handlePending = state => {
+  state.isLoading = true;
+};
 
 const slice = createSlice({
   name: 'city',
