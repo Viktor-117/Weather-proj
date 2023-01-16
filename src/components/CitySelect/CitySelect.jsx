@@ -11,7 +11,7 @@ export default function CitySelect({ cities, isChosen }) {
     const gps = { latitude, longitude, name };
     dispatch(setCity(gps));
     dispatch(getForecast({ latitude, longitude }));
-    // isChosen('');
+    isChosen('');
   };
 
   return (

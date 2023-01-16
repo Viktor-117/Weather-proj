@@ -19,7 +19,6 @@ import SearchIcon from '@mui/icons-material/Search';
 axios.defaults.baseURL = 'https://geocoding-api.open-meteo.com/v1/';
 
 export default function SearchAppBar() {
-  // const dispatch = useDispatch();
   const [location, setLocation] = useState('');
   const [cityList, setCityList] = useState('');
 
