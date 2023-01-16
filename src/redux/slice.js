@@ -3,6 +3,7 @@ import getForecast from './operations';
 
 const initialState = {
   city: { latitude: null, longitude: null },
+  cityName: null,
   isLoading: false,
   error: null,
 };
@@ -15,8 +16,8 @@ const slice = createSlice({
   name: 'city',
   initialState,
   reducers: {
-    setCity(state, action) {
-      state.city = action.payload;
+    setCityName(state, action) {
+      state.cityName = action.payload;
     },
   },
   extraReducers: {
@@ -36,6 +37,6 @@ const slice = createSlice({
 
 const cityReducer = slice.reducer;
 
-export const { setCity } = slice.actions;
+export const { setCityName } = slice.actions;
 
 export default cityReducer;
