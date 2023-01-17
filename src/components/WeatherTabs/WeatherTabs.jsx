@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import selectors from 'redux/selectors';
 import operations from 'redux/operations';
@@ -11,6 +11,10 @@ export default function WeatherTabs() {
   const { latitude, longitude } = useSelector(selectors.getCity);
   const [value, setValue] = useState(0);
 
+  useEffect(() => {
+    dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+  }, []);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
 
@@ -19,13 +23,13 @@ export default function WeatherTabs() {
         dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
         break;
       case 1:
-        dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+        dispatch(operations.fetchTodayWeather({ latitude, longitude }));
         break;
       case 2:
-        dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+        dispatch(operations.fetchDailyWeather({ latitude, longitude }));
         break;
       case 3:
-        dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+        dispatch(operations.fetchDailyWeather({ latitude, longitude }));
         break;
       default:
         return;
