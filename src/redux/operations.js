@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const fetchCurrentWeather = createAsyncThunk(
-  'city/getForecast',
+  'weather/getForecast',
   async ({ latitude, longitude }, thunkAPI) => {
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2
@@ -18,7 +18,7 @@ const fetchCurrentWeather = createAsyncThunk(
 );
 
 const fetchTodayWeather = createAsyncThunk(
-  'city/getForecast',
+  'weather/getForecast',
   async ({ latitude, longitude }, thunkAPI) => {
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2
@@ -36,7 +36,7 @@ const fetchTodayWeather = createAsyncThunk(
 );
 
 const fetchDailyWeather = createAsyncThunk(
-  'city/getForecast',
+  'weather/getForecast',
   async ({ latitude, longitude }, thunkAPI) => {
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2

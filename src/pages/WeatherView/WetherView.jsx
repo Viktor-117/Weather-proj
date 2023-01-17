@@ -9,14 +9,19 @@ import WeatherInfo from 'components/WeatherInfo';
 export default function WeatherView() {
   const city = useSelector(selectors.getCity);
   const isLoading = useSelector(selectors.getIsLoading);
+  const loadCard = useSelector(selectors.getLoadCard);
+
+  console.log(loadCard);
+
+  // const load = city && loadCard
 
   return (
     <Box>
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
-      {!city.name ? <Navigate to="/" /> : <Title>{city.name}</Title>}
-      <WeatherTabs />
-      {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
-      {city && <WeatherInfo />}
+      {!city.name ? <Navigate to="/" /> : <WeatherTabs />}
+
+      {/* {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
+      {loadCard && <WeatherInfo />} */}
     </Box>
   );
 }
