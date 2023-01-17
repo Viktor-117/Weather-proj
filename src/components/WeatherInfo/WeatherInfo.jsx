@@ -1,33 +1,28 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { Box } from './WeatherInfo.styled';
+import { Box, Pic } from './WeatherInfo.styled';
 import selectors from 'redux/selectors';
+import selectimg from './selectImg';
 
 export default function WeatherInfo() {
-  const cardInfo = useSelector(selectors.getForecastData);
-  console.log(cardInfo);
+  const { current_weather } = useSelector(selectors.getForecastData);
+  const img = selectimg(current_weather.weathercode);
+  console.log(img);
 
   return (
     <Box>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ width: 200 }}>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            // image={`img/${cardInfo.current_weather.weathercode}`}
-            alt="green iguana"
-          />
+          <Pic src={img} alt="" height="100" />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Lizard
+              {`Temp.: ${Math.round(current_weather.temperature)} \u{00B0}C`}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {`Wind speed: ${current_weather.windspeed} km/h`}
             </Typography>
           </CardContent>
         </CardActionArea>

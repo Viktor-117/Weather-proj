@@ -7,3 +7,13 @@ export const Box = styled.div`
   padding: 20px;
   background-color: #e7ebf0;
 `;
+
+export const Pic = styled.img`
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 120px;
+  width: 120px;
+`;

@@ -13,7 +13,6 @@ const initialState = {
 
 const handlePending = state => {
   state.isLoading = true;
-  console.log('Hi');
 };
 
 const weatherSlice = createSlice({
@@ -21,13 +20,32 @@ const weatherSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchCurrentWeather.fulfilled](state, action) {
-      console.log('Hi');
       state.isLoading = false;
       state.forecastData = action.payload;
       state.loadCard = true;
     },
     [fetchCurrentWeather.pending]: handlePending,
     [fetchCurrentWeather.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [fetchTodayWeather.fulfilled](state, action) {
+      state.isLoading = false;
+      state.forecastData = action.payload;
+      state.loadCard = true;
+    },
+    [fetchTodayWeather.pending]: handlePending,
+    [fetchTodayWeather.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [fetchDailyWeather.fulfilled](state, action) {
+      state.isLoading = false;
+      state.forecastData = action.payload;
+      state.loadCard = true;
+    },
+    [fetchDailyWeather.pending]: handlePending,
+    [fetchDailyWeather.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },

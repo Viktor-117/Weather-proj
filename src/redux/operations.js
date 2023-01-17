@@ -9,7 +9,6 @@ const fetchCurrentWeather = createAsyncThunk(
     )}&longitude=${longitude.toFixed(2)}&current_weather=true`;
     try {
       const response = await axios.get(queryParamaters);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,7 +26,6 @@ const fetchTodayWeather = createAsyncThunk(
     )}&hourly=temperature_2m,precipitation,rain,weathercode`;
     try {
       const response = await axios.get(queryParamaters);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -45,7 +43,6 @@ const fetchDailyWeather = createAsyncThunk(
     )}&daily=temperature_2m,precipitation,rain,weathercode`;
     try {
       const response = await axios.get(queryParamaters);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -9,11 +9,7 @@ import WeatherInfo from 'components/WeatherInfo';
 export default function WeatherView() {
   const city = useSelector(selectors.getCity);
   const isLoading = useSelector(selectors.getIsLoading);
-  const loadCard = useSelector(selectors.getLoadCard);
-
-  console.log(loadCard);
-
-  // const load = city && loadCard
+  //   const loadCard = useSelector(selectors.getLoadCard);
 
   return (
     <Box>
