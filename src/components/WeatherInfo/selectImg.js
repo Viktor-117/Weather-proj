@@ -16,6 +16,7 @@ import snowHeavy from 'img/75.png';
 import showerSlight from 'img/80.png';
 import showerMid from 'img/81.png';
 import showerViolent from 'img/82.png';
+import thunderstorm from 'img/95.png';
 
 export default function selectimg(code) {
   if (code === 0) {
@@ -54,5 +55,7 @@ export default function selectimg(code) {
     return showerMid;
   } else if (code === 82) {
     return showerViolent;
+  } else if (code === 95 || code === 96 || code === 99) {
+    return thunderstorm;
   }
 }

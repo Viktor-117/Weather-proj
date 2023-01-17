@@ -14,7 +14,7 @@ export default function WeatherInfo() {
 
   return (
     <Box>
-      <Card sx={{ width: 200 }}>
+      <Card sx={{ width: 240 }}>
         <CardActionArea>
           <Pic src={img} alt="" height="100" />
           <CardContent>

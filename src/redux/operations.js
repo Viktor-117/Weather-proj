@@ -26,6 +26,7 @@ const fetchTodayWeather = createAsyncThunk(
     )}&hourly=temperature_2m,precipitation,rain,weathercode`;
     try {
       const response = await axios.get(queryParamaters);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -14,7 +14,6 @@ export default function WeatherTabs() {
   const dispatch = useDispatch();
   const { latitude, longitude, name } = useSelector(selectors.getCity);
   const [value, setValue] = useState(0);
-  //   const city = useSelector(selectors.getCity);
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
@@ -37,7 +36,6 @@ export default function WeatherTabs() {
         break;
       case 3:
         dispatch(operations.fetchDailyWeather({ latitude, longitude }));
-        console.log(loadCard);
         break;
       default:
         return;
@@ -55,6 +53,7 @@ export default function WeatherTabs() {
           <Tab label="5 Days" />
         </Tabs>
       </Box>
+      {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
       {loadCard && <WeatherInfo />}
     </Container>
   );
