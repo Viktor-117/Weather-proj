@@ -18,9 +18,9 @@ export default function WeatherTabs() {
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
-  useEffect(() => {
-    dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+  // }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
