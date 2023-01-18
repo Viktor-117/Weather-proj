@@ -1,7 +1,6 @@
 import { RotatingLines } from 'react-loader-spinner';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
 import selectors from 'redux/selectors';
 import { setPeriod } from 'redux/citySlice';
 import operations from 'redux/operations';
