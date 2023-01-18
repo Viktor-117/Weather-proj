@@ -6,7 +6,8 @@ import { Box, Pic, Time } from './WeatherCard.styled';
 import selectimg from './selectImg';
 
 export default function WeatherCard({ weatherInfo }) {
-  const { temperature, weathercode, windspeed, time } = weatherInfo;
+  console.log(weatherInfo);
+  const { temperature, weathercode, windspeed, hour } = weatherInfo;
 
   const img = selectimg(weathercode);
 
@@ -14,9 +15,9 @@ export default function WeatherCard({ weatherInfo }) {
     <Box>
       <Card sx={{ width: 240 }}>
         <CardActionArea>
-          {time && (
+          {hour && (
             <Time gutterBottom variant="h5" component="div">
-              {time}
+              {hour}
             </Time>
           )}
 

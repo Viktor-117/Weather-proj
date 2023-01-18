@@ -24,11 +24,11 @@ export default function TodayWeather() {
   };
   const temperature = [];
   const weathercode = [];
-  const windSpeed = [];
+  const windspeed = [];
 
   getTodayArray(hourly.temperature_2m, temperature);
   getTodayArray(hourly.weathercode, weathercode);
-  getTodayArray(hourly.windspeed_10m, windSpeed);
+  getTodayArray(hourly.windspeed_10m, windspeed);
 
   return (
     <Box>
@@ -40,8 +40,8 @@ export default function TodayWeather() {
               weatherInfo={{
                 temperature: temperature[index],
                 weathercode: weathercode[index],
-                windSpeed: windSpeed[index],
-                time: item,
+                windspeed: windspeed[index],
+                hour: item,
               }}
             />
           );

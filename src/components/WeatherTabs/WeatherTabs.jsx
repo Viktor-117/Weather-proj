@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import selectors from 'redux/selectors';
+import { setPeriod } from 'redux/citySlice';
 import operations from 'redux/operations';
 import NowWeather from 'components/NowWeather';
 import TodayWeather from 'components/TodayWeather';
@@ -15,7 +16,8 @@ export default function WeatherTabs() {
   const dispatch = useDispatch();
   const { latitude, longitude, name } = useSelector(selectors.getCity);
   const [value, setValue] = useState(0);
-  const [period, setPeriod] = useState('now');
+  // const [period, setPeriod] = useState('now');
+  let period = useSelector(selectors.getPeriod);
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
@@ -30,21 +32,21 @@ export default function WeatherTabs() {
     switch (newValue) {
       case 0:
         dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
-        setPeriod('now');
+        dispatch(setPeriod('now'));
         break;
       case 1:
         dispatch(operations.fetchTodayWeather({ latitude, longitude }));
-        setPeriod('today');
+        dispatch(setPeriod('today'));
         break;
 
       case 2:
         dispatch(operations.fetchDailyWeather({ latitude, longitude }));
-        setPeriod('3 days');
+        dispatch(setPeriod('3 days'));
         break;
 
       case 3:
         dispatch(operations.fetchDailyWeather({ latitude, longitude }));
-        setPeriod('5 days');
+        dispatch(setPeriod('5 days'));
         break;
 
       default:

@@ -6,6 +6,14 @@ const getForecastData = state => state.weather.forecastData;
 
 const getLoadCard = state => state.weather.loadCard;
 
-const selectors = { getCity, getIsLoading, getForecastData, getLoadCard };
+const getPeriod = state => state.city.period;
+
+const selectors = {
+  getCity,
+  getIsLoading,
+  getForecastData,
+  getLoadCard,
+  getPeriod,
+};
 
 export default selectors;

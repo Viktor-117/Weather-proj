@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   city: { latitude: null, longitude: null, name: null },
+  period: 'now',
 };
 
 const citySlice = createSlice({
@@ -11,11 +12,14 @@ const citySlice = createSlice({
     setCity(state, action) {
       state.city = action.payload;
     },
+    setPeriod(state, action) {
+      state.period = action.payload;
+    },
   },
 });
 
 const cityReducer = citySlice.reducer;
 
-export const { setCity } = citySlice.actions;
+export const { setCity, setPeriod } = citySlice.actions;
 
 export default cityReducer;
