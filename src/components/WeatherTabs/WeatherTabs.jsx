@@ -1,10 +1,10 @@
-import { Navigate } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import selectors from 'redux/selectors';
 import operations from 'redux/operations';
-import WeatherInfo from 'components/WeatherInfo';
+import NowWeather from 'components/NowWeather';
 import { Title, Container } from './WeatherTabs.styled';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,12 +14,14 @@ export default function WeatherTabs() {
   const dispatch = useDispatch();
   const { latitude, longitude, name } = useSelector(selectors.getCity);
   const [value, setValue] = useState(0);
+  const [period, setPeriod] = useState('');
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
   // useEffect(() => {
   //   dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
   // }, []);
+  // let periodSelector = '';
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -27,16 +29,23 @@ export default function WeatherTabs() {
     switch (newValue) {
       case 0:
         dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
+        setPeriod('now');
         break;
       case 1:
         dispatch(operations.fetchTodayWeather({ latitude, longitude }));
+        setPeriod('today');
         break;
+
       case 2:
         dispatch(operations.fetchDailyWeather({ latitude, longitude }));
+        setPeriod('3 days');
         break;
+
       case 3:
         dispatch(operations.fetchDailyWeather({ latitude, longitude }));
+        setPeriod('5 days');
         break;
+
       default:
         return;
     }
@@ -54,7 +63,7 @@ export default function WeatherTabs() {
         </Tabs>
       </Box>
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
-      {loadCard && <WeatherInfo />}
+      {loadCard && <NowWeather />}
     </Container>
   );
 }

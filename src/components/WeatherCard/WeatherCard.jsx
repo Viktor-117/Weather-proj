@@ -3,14 +3,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { Box, Pic } from './WeatherInfo.styled';
+import { Box, Pic } from './WeatherCard.styled';
 import selectors from 'redux/selectors';
 import selectimg from './selectImg';
 
-export default function WeatherInfo() {
+export default function WeatherCard() {
   const { current_weather } = useSelector(selectors.getForecastData);
   const img = selectimg(current_weather.weathercode);
-  console.log(img);
 
   return (
     <Box>

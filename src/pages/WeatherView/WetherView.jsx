@@ -2,9 +2,9 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RotatingLines } from 'react-loader-spinner';
 import selectors from 'redux/selectors';
-import { Box, Title } from './WetherView.styled';
+import { Box } from './WetherView.styled';
 import WeatherTabs from 'components/WeatherTabs';
-import WeatherInfo from 'components/WeatherInfo';
+// import WeatherInfo from 'components/WeatherInfo';
 
 export default function WeatherView() {
   const city = useSelector(selectors.getCity);
