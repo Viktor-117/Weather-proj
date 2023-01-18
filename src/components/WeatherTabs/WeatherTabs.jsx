@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import selectors from 'redux/selectors';
 import operations from 'redux/operations';
 import NowWeather from 'components/NowWeather';
+import TodayWeather from 'components/TodayWeather';
 import { Title, Container } from './WeatherTabs.styled';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -14,7 +15,7 @@ export default function WeatherTabs() {
   const dispatch = useDispatch();
   const { latitude, longitude, name } = useSelector(selectors.getCity);
   const [value, setValue] = useState(0);
-  const [period, setPeriod] = useState('');
+  const [period, setPeriod] = useState('now');
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
@@ -63,7 +64,8 @@ export default function WeatherTabs() {
         </Tabs>
       </Box>
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
-      {loadCard && <NowWeather />}
+      {period === 'now' && loadCard && <NowWeather />}
+      {period === 'today' && loadCard && <TodayWeather />}
     </Container>
   );
 }

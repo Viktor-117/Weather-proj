@@ -1,3 +1,4 @@
+import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 
 export const Box = styled.div`
@@ -16,4 +17,9 @@ export const Pic = styled.img`
   margin-right: auto;
   height: 120px;
   width: 120px;
+`;
+
+export const Time = styled(Typography)`
+  text-align: center;
+  padding-top: 15px;
 `;

@@ -23,7 +23,7 @@ const fetchTodayWeather = createAsyncThunk(
       2
     )}&longitude=${longitude.toFixed(
       2
-    )}&hourly=temperature_2m,precipitation,rain,weathercode`;
+    )}&hourly=temperature_2m,precipitation,rain,weathercode,windspeed_10m`;
     try {
       const response = await axios.get(queryParamaters);
       console.log(response.data);

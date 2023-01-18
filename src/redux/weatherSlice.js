@@ -13,42 +13,35 @@ const initialState = {
 
 const handlePending = state => {
   state.isLoading = true;
+  state.loadCard = false;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const handleFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.forecastData = action.payload;
+  state.loadCard = true;
 };
 
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   extraReducers: {
-    [fetchCurrentWeather.fulfilled](state, action) {
-      state.isLoading = false;
-      state.forecastData = action.payload;
-      state.loadCard = true;
-    },
+    [fetchCurrentWeather.fulfilled]: handleFulfilled,
     [fetchCurrentWeather.pending]: handlePending,
-    [fetchCurrentWeather.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    [fetchTodayWeather.fulfilled](state, action) {
-      state.isLoading = false;
-      state.forecastData = action.payload;
-      state.loadCard = true;
-    },
+    [fetchCurrentWeather.rejected]: handleRejected,
+
+    [fetchTodayWeather.fulfilled]: handleFulfilled,
     [fetchTodayWeather.pending]: handlePending,
-    [fetchTodayWeather.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    [fetchDailyWeather.fulfilled](state, action) {
-      state.isLoading = false;
-      state.forecastData = action.payload;
-      state.loadCard = true;
-    },
+    [fetchTodayWeather.rejected]: handleRejected,
+
+    [fetchDailyWeather.fulfilled]: handleFulfilled,
     [fetchDailyWeather.pending]: handlePending,
-    [fetchDailyWeather.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    [fetchDailyWeather.rejected]: handleRejected,
   },
 });
 
