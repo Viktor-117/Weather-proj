@@ -2,10 +2,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { useSelector } from 'react-redux';
+import selectors from 'redux/selectors';
 import { Box, Pic, Time } from './WeatherCard.styled';
 import selectimg from './selectImg';
 
 export default function WeatherCard({ weatherInfo }) {
+  const period = useSelector(selectors.getPeriod);
   const {
     temperature,
     weathercode,
@@ -21,7 +24,7 @@ export default function WeatherCard({ weatherInfo }) {
   return (
     <Box>
       <Card sx={{ width: 240 }}>
-        <CardActionArea>
+        <CardActionArea disabled={period === 'now' || period === 'today'}>
           {hour && (
             <Time gutterBottom variant="h5" component="div">
               {hour}
