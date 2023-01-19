@@ -10,16 +10,16 @@ export default function CitySelect({ cities, isChosen }) {
   const period = useSelector(selectors.getPeriod);
   console.log(period);
 
-  const handleClick = ({ latitude, longitude, name }) => {
-    dispatch(setCity({ latitude, longitude, name }));
+  const handleClick = ({ latitude, longitude, name, timezone }) => {
+    dispatch(setCity({ latitude, longitude, name, timezone }));
     period === 'now' &&
       dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
     period === 'today' &&
       dispatch(operations.fetchTodayWeather({ latitude, longitude }));
     period === '3 days' &&
-      dispatch(operations.fetchDailyWeather({ latitude, longitude }));
-    period === '5 days' &&
-      dispatch(operations.fetchDailyWeather({ latitude, longitude }));
+      dispatch(operations.fetchDailyWeather({ latitude, longitude, timezone }));
+    period === '7 days' &&
+      dispatch(operations.fetchDailyWeather({ latitude, longitude, timezone }));
     isChosen('');
   };
 

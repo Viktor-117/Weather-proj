@@ -14,7 +14,9 @@ import Box from '@mui/material/Box';
 
 export default function WeatherTabs() {
   const dispatch = useDispatch();
-  const { latitude, longitude, name } = useSelector(selectors.getCity);
+  const { latitude, longitude, name, timezone } = useSelector(
+    selectors.getCity
+  );
   const [value, setValue] = useState(0);
   // const [period, setPeriod] = useState('now');
   let period = useSelector(selectors.getPeriod);
@@ -40,12 +42,16 @@ export default function WeatherTabs() {
         break;
 
       case 2:
-        dispatch(operations.fetchDailyWeather({ latitude, longitude }));
+        dispatch(
+          operations.fetchDailyWeather({ latitude, longitude, timezone })
+        );
         dispatch(setPeriod('3 days'));
         break;
 
       case 3:
-        dispatch(operations.fetchDailyWeather({ latitude, longitude }));
+        dispatch(
+          operations.fetchDailyWeather({ latitude, longitude, timezone })
+        );
         dispatch(setPeriod('5 days'));
         break;
 

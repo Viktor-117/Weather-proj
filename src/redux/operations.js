@@ -36,12 +36,12 @@ const fetchTodayWeather = createAsyncThunk(
 
 const fetchDailyWeather = createAsyncThunk(
   'weather/getForecast',
-  async ({ latitude, longitude }, thunkAPI) => {
+  async ({ latitude, longitude, timezone }, thunkAPI) => {
     const queryParamaters = `https://api.open-meteo.com/v1/forecast?latitude=${latitude.toFixed(
       2
     )}&longitude=${longitude.toFixed(
       2
-    )}&timeformat=unixtime&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max,weathercode&timezone=auto`;
+    )}&timeformat=unixtime&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max,weathercode&timezone=${timezone}`;
     try {
       const response = await axios.get(queryParamaters);
       console.log(response.data);
