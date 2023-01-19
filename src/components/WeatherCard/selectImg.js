@@ -43,7 +43,7 @@ export default function selectimg(code) {
     return rainMid;
   } else if (code === 65) {
     return rainHeavy;
-  } else if (code === 71) {
+  } else if (code === 71 || code === 85 || code === 86) {
     return snowSlight;
   } else if (code === 73) {
     return snowMid;

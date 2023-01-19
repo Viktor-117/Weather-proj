@@ -41,9 +41,10 @@ const fetchDailyWeather = createAsyncThunk(
       2
     )}&longitude=${longitude.toFixed(
       2
-    )}&daily=temperature_2m,precipitation,rain,weathercode`;
+    )}&timeformat=unixtime&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max,weathercode&timezone=auto`;
     try {
       const response = await axios.get(queryParamaters);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

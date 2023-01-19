@@ -5,7 +5,6 @@ import WeatherCard from 'components/WeatherCard';
 
 export default function TodayWeather() {
   const { hourly } = useSelector(selectors.getForecastData);
-  console.log(hourly);
 
   const time = [
     '02.00',

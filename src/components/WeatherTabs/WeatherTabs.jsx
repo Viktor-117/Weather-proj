@@ -6,6 +6,7 @@ import { setPeriod } from 'redux/citySlice';
 import operations from 'redux/operations';
 import NowWeather from 'components/NowWeather';
 import TodayWeather from 'components/TodayWeather';
+import ThreeDaysWeather from 'components/ThreeDaysWeather';
 import { Title, Container } from './WeatherTabs.styled';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -67,6 +68,7 @@ export default function WeatherTabs() {
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
       {period === 'now' && loadCard && <NowWeather />}
       {period === 'today' && loadCard && <TodayWeather />}
+      {period === '3 days' && loadCard && <ThreeDaysWeather />}
     </Container>
   );
 }

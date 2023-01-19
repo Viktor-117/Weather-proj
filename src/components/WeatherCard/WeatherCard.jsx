@@ -7,7 +7,15 @@ import selectimg from './selectImg';
 
 export default function WeatherCard({ weatherInfo }) {
   console.log(weatherInfo);
-  const { temperature, weathercode, windspeed, hour } = weatherInfo;
+  const {
+    temperature,
+    weathercode,
+    windspeed,
+    hour,
+    minTemperature,
+    maxTemperature,
+    date,
+  } = weatherInfo;
 
   const img = selectimg(weathercode);
 
@@ -20,14 +28,31 @@ export default function WeatherCard({ weatherInfo }) {
               {hour}
             </Time>
           )}
+          {date && (
+            <Time gutterBottom variant="h5" component="div">
+              {date}
+            </Time>
+          )}
 
           <Pic src={img} alt="" height="100" />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {`Temp.: ${Math.round(temperature)} \u{00B0}C`}
-            </Typography>
+            {maxTemperature && (
+              <Typography gutterBottom variant="h5" component="div">
+                {`Max.temp.: ${Math.round(maxTemperature)} \u{00B0}C`}
+              </Typography>
+            )}
+            {minTemperature && (
+              <Typography gutterBottom variant="h5" component="div">
+                {`Min.temp.: ${Math.round(minTemperature)} \u{00B0}C`}
+              </Typography>
+            )}
+            {temperature && (
+              <Typography gutterBottom variant="h5" component="div">
+                {`Temp.: ${Math.round(temperature)} \u{00B0}C`}
+              </Typography>
+            )}
             <Typography variant="body2" color="text.secondary">
-              {`Wind speed: ${windspeed} km/h`}
+              {`Wind speed: ${Math.round(windspeed)} km/h`}
             </Typography>
           </CardContent>
         </CardActionArea>
