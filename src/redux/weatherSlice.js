@@ -47,6 +47,4 @@ const weatherSlice = createSlice({
 
 const weatherReducer = weatherSlice.reducer;
 
-// export const { getForecast } = weatherSlice.actions;
-
 export default weatherReducer;

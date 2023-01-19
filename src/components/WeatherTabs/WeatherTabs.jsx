@@ -19,17 +19,11 @@ export default function WeatherTabs() {
     selectors.getCity
   );
   const [value, setValue] = useState(0);
-  // const [period, setPeriod] = useState('now');
   let period = useSelector(selectors.getPeriod);
   const isLoading = useSelector(selectors.getIsLoading);
   const loadCard = useSelector(selectors.getLoadCard);
 
-  // useEffect(() => {
-  //   dispatch(operations.fetchCurrentWeather({ latitude, longitude }));
-  // }, []);
-  // let periodSelector = '';
-
-  const handleChange = (event, newValue) => {
+  const handleChange = (_, newValue) => {
     setValue(newValue);
 
     switch (newValue) {

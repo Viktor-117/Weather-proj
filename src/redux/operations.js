@@ -26,7 +26,6 @@ const fetchTodayWeather = createAsyncThunk(
     )}&hourly=temperature_2m,precipitation,rain,weathercode,windspeed_10m`;
     try {
       const response = await axios.get(queryParamaters);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -44,7 +43,6 @@ const fetchDailyWeather = createAsyncThunk(
     )}&timeformat=unixtime&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max,weathercode&timezone=${timezone}`;
     try {
       const response = await axios.get(queryParamaters);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

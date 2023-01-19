@@ -8,7 +8,6 @@ import operations from 'redux/operations';
 export default function CitySelect({ cities, isChosen }) {
   const dispatch = useDispatch();
   const period = useSelector(selectors.getPeriod);
-  console.log(period);
 
   const handleClick = ({ latitude, longitude, name, timezone }) => {
     dispatch(setCity({ latitude, longitude, name, timezone }));

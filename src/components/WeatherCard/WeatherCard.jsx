@@ -6,7 +6,6 @@ import { Box, Pic, Time } from './WeatherCard.styled';
 import selectimg from './selectImg';
 
 export default function WeatherCard({ weatherInfo }) {
-  console.log(weatherInfo);
   const {
     temperature,
     weathercode,

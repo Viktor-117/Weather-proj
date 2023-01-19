@@ -17,7 +17,6 @@ export default function ThreeDaysWeather() {
   time.map(day =>
     date.push(new Date(day * 1000).toLocaleDateString('en-GB').substring(0, 5))
   );
-  console.log(date);
 
   return (
     <Box>

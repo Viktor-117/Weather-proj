@@ -4,20 +4,15 @@ import { RotatingLines } from 'react-loader-spinner';
 import selectors from 'redux/selectors';
 import { Box } from './WetherView.styled';
 import WeatherTabs from 'components/WeatherTabs';
-// import WeatherInfo from 'components/WeatherInfo';
 
 export default function WeatherView() {
   const city = useSelector(selectors.getCity);
   const isLoading = useSelector(selectors.getIsLoading);
-  //   const loadCard = useSelector(selectors.getLoadCard);
 
   return (
     <Box>
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
       {!city.name ? <Navigate to="/" /> : <WeatherTabs />}
-
-      {/* {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
-      {loadCard && <WeatherInfo />} */}
     </Box>
   );
 }
