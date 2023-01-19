@@ -7,6 +7,7 @@ import operations from 'redux/operations';
 import NowWeather from 'components/NowWeather';
 import TodayWeather from 'components/TodayWeather';
 import ThreeDaysWeather from 'components/ThreeDaysWeather';
+import SevenDaysWeather from 'components/SevenDaysWeather';
 import { Title, Container } from './WeatherTabs.styled';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -52,7 +53,7 @@ export default function WeatherTabs() {
         dispatch(
           operations.fetchDailyWeather({ latitude, longitude, timezone })
         );
-        dispatch(setPeriod('5 days'));
+        dispatch(setPeriod('7 days'));
         break;
 
       default:
@@ -68,13 +69,14 @@ export default function WeatherTabs() {
           <Tab label="Now" />
           <Tab label="Today" />
           <Tab label="3 Days" />
-          <Tab label="5 Days" />
+          <Tab label="7 Days" />
         </Tabs>
       </Box>
       {isLoading && <RotatingLines strokeColor="#3B8AD9" />}
       {period === 'now' && loadCard && <NowWeather />}
       {period === 'today' && loadCard && <TodayWeather />}
       {period === '3 days' && loadCard && <ThreeDaysWeather />}
+      {period === '7 days' && loadCard && <SevenDaysWeather />}
     </Container>
   );
 }

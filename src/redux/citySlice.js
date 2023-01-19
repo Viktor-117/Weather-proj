@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  city: { latitude: null, longitude: null, name: null },
+  city: { latitude: null, longitude: null, name: null, timezone: null },
   period: 'now',
 };
 
